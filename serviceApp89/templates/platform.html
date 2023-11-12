@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% load static %}{% load widget_tweaks %}
+<!--标题-->
+{% block title %} 人脸识别开发平台 {%endblock %}
+
+<!--主体-->
+
+{% block content %}
+<!--主体-->
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+<div class="container-fluid">
+  <div class="row">
+    <img
+      class="img-responsive model-img"
+      src="{% static 'img/service.jpg' %}"
+    />
+  </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+  <div class="row row-3">
+    <!-- 侧边导航栏 -->
+    <div class="col-md-3">
+      <div class="model-title">服务支持</div>
+      <div class="model-list">
+        <ul class="list-group">
+          <!--侧边栏部分采用Bootstrap提供的列表组件 list-group实现-->
+          <li class="list-group-item" id="download">
+            <a href="{% url 'serviceApp89:download' %}">资料下载</a>
+          </li>
+          <li class="list-group-item" id="platform">
+            <a href="{% url 'serviceApp89:platform' %}">人脸识别开发平台</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 说明文字和图片 -->
+     <div class="col-md-9">
+      <div class="model-details-title">资料列表</div>
+      <div class="model-details"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

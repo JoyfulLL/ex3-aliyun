@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>中国科技|{% block title%}{% endblock%}</title>
+    <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    <div class="container top">
+      <div class="row">
+        <div class="col-md-6">
+          <a><img class="img-responsive" src="{% static 'img/logo.jpg'%}" /></a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+          <a class="phone ant">
+            <span class="glyphicon glyphicon-phone"></span>电话:1234567890
+            &nbsp;&nbsp;
+          </a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+          <a class="mail ant">
+            <span class="glyphicon glyphicon-envelope"></span
+            >E-mail:123456@163.com
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example">
+          <ul class="nav navbar-nav active" style="width: 100%">
+            <li class="nav-top" id="home">
+              <a href="{% url 'home'%}">首页</a>
+            </li>
+            <li class="dropdown nav-top" id="about">
+              <a href="#" class="dropdown-toggle on" data-toggle="dropdown"
+                >公司简介</a
+              >
+              <ul class="dropdown-menu">
+                <li id="about1">
+                  <a href="{% url 'aboutApp89:survey'%}">企业概况</a>
+                </li>
+                <li id="about2">
+                  <a href="{% url 'aboutApp89:honor'%}">荣誉资质</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown nav-top" id="news">
+              <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                新闻动态</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{% url 'newsApp89:news' 'company'%}">企业要闻</a>
+                </li>
+                <li>
+                  <a href="{% url 'newsApp89:news' 'industry'%}">行业新闻</a>
+                </li>
+                <li>
+                  <a href="{% url 'newsApp89:news' 'notice'%}">通知公告</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown nav-top" id="products">
+              <a href="#" class="dropdown-toggle on" data-toggle="dropdown"
+                >产品中心</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{% url 'productApp89:products' 'robot' %}"
+                    >家用机器人</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'productApp89:products' 'monitor' %}"
+                    >智能监控</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'productApp89:products' 'face' %}"
+                    >人脸识别解决方案</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown nav-top" id="service">
+              <a href="#" class="dropdown-toggle on" data-toggle="dropdown"
+                >服务支持</a
+              >
+              <ul class="dropdown-menu" id="service">
+                <li>
+                  <a href="{% url 'serviceApp89:download' %}">资料下载</a>
+                </li>
+                <li>
+                  <a href="{% url 'serviceApp89:platform' %}"
+                    >人脸识别开放平台</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-top" id="science">
+              <a href="{% url 'scienceApp89:science' %}">科研基地</a>
+            </li>
+            <li class="dropdown nav-top" id="contact">
+              <a href="#" class="dropdown-toggle on" data-toggle="dropdown"
+                >人才招聘</a
+              >
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'contactApp89:contact' %}">欢迎咨询</a></li>
+                <li><a href="{% url 'contactApp89:recruit' %}">加入我们</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="line"></div>
+
+    {% block content %} {% endblock %}
+
+    <div class="container web-footer">
+      <!--map-->
+      <div class="row" id="map-footer">
+        <div class="col-md-2" id="honor">
+          <dl>
+            <dt>公司简介</dt>
+            <dd><a href="{% url 'aboutApp89:survey'%}">企业概况</a></dd>
+            <dd><a href="{% url 'aboutApp89:honor'%}">荣誉资质</a></dd>
+          </dl>
+        </div>
+
+        <div class="col-md-2">
+          <dl>
+            <dt>产品中心</dt>
+            <dd>
+              <a href="{% url 'productApp89:products' 'robot' %}"
+                >家用智能机器人</a
+              >
+            </dd>
+            <dd>
+              <a href="{% url 'productApp89:products' 'monitor' %}">智能监控</a>
+            </dd>
+            <dd>
+              <a href="{% url 'productApp89:products' 'face' %}">人脸识别</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-md-2">
+          <dl>
+            <dt>服务支持</dt>
+            <dd><a href="{% url 'serviceApp89:download'%}">资料下载</a></dd>
+            <dd>
+              <a href="{% url 'serviceApp89:platform'%}">人脸识别开放平台</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-md-2">
+          <dl>
+            <dt>人才招聘</dt>
+            <dd><a href="{% url 'contactApp89:contact'%}">欢迎咨询</a></dd>
+            <dd><a href="{% url 'contactApp89:recruit'%}">加入我们</a></dd>
+          </dl>
+        </div>
+        <div class="col-md-4" id="wx">
+          <p>扫描二维码，关注我吧</p>
+          <img class="qrimg" src="{% static 'img/qr.png'%}" alt="wx" />
+          <p>客服热线:<b style="font-size: 20px">123 456 789</b></p>
+        </div>
+      </div>
+      <!--版权-->
+      <div class="row" id="patent-footer">
+        <p>@2023 Python Web 梁俊枫 版权无有</p>
+      </div>
+    </div>
+
+    <script type="text/JavaScript">
+      //dango变量注释它也是读的出来的,是django变量,可以在应用文件夹下的views.py中设置对应变量，一般用字典表示
+          $('#scienceApp89').addClass("active"); //是为了添加激活属性到#{{active_menu}}该标签中
+    </script>
+
+    <script type="text/JavaScript">
+      $('#aboutApp89').addClass("active");
+    </script>
+
+    <script type="text/JavaScript">
+      //dango变量注释它也是读的出来的,是django变量,可以在应用文件夹下的views.py中设置对应变量，一般用字典表示
+          $('#{{active_menu}}').addClass("active");
+          $('#{{active_menu1}}').addClass("active");
+    </script>
+
+    <script>
+      $(function () {
+        $(".dropdown").mouseover(function () {
+          $(this).addClass("open");
+        });
+        $(".dropdown").mouseleave(function () {
+          $(this).removeClass("open");
+        });
+      });
+    </script>
+
+    <script>
+      $("#{{sub_menu}}").addClass("active");
+    </script>
+  </body>
+</html>

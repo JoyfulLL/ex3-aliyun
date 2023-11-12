@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% load static %}
+
+<!---->
+{% block title %} 产品详情{%endblock %}
+
+<!-- 主体内容-->
+{% block content %}
+<link href="{% static 'css/product.css' %}" rel="stylesheet" />
+<!-- 主体内容 ：产品图片、产品完整描述信息、产品参考价格-->
+<div class="container">
+  <div class="model-details-product-title">
+    <!-- 主体内容 引用变量标题-->
+    {{product.title}}
+  </div>
+  <div class="model-details">
+    <!-- 主体内容 引用变量图片-->
+    {% for img in product.productImgs.all %}
+    <div class="row-4">
+      <img class="img-responsive" src="{{img.photo.url}}" />
+    </div>
+    <!--产品图片以堆叠的方式显示在主体头部-->
+    {% endfor %}
+    <h3>产品介绍</h3>
+    <!-- 主体内容 引用变量产品介绍-->
+    <p>{{product.description|linebreaks}}</p>
+    <h3>参考价格</h3>
+    <p>{{product.price}}元</p>
+  </div>
+</div>
+{% endblock %}

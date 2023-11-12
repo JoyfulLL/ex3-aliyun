@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% load static %}
+<!---->
+{% block title %} 新闻详情 {% endblock %}
+<!--主体内容-->
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}" />
+<!--主体内容-->
+<div class="container">
+  <div class="model-details-product-title">
+    {{mynew.title}}
+    <div class="model-foot">
+      发布时间：{{mynew.publishDate|date:"Y-m-d"}} &nbsp;&nbsp;
+      浏览次数：{{mynew.views}}
+    </div>
+  </div>
+  <div class="model-details">
+    {{mynew.description | safe}}
+    <!--这个|的分割符前后可有可无空格-->
+  </div>
+</div>
+{% endblock %}

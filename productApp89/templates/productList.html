@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% load static %}
+<!--标题-->
+{% block title %}{{productName}}{%endblock %}
+
+<!--主体-->
+{% block content %} <link href="{% static "css/product.css" %}"
+rel="stylesheet">
+<!--广告横幅-->
+<div class="container-fluid">
+  <div class="row">
+    <img class="img-responsive model-img" src="{% static "img/products.jpg" %}">
+  </div>
+</div>
+<!--主体内容-->
+<div class="container">
+  <div class="row row-3">
+    <!-- 侧边导航栏 -->
+    <div class="col-md-3">
+      <div class="model-title">产品中心</div>
+      <div class="model-list">
+        <ul class="list-group">
+          <li class="list-group-item" id="robot">
+            <!--逆向解析  '应用名:路由名' '字符串' (字符串表示该路由带字符型参数,该参数将由后台进行解析)-->
+            <a href="{% url 'productApp89:products' 'robot' %}">家用机器人</a>
+            <!--这里后面代入的参数不一样 如 'robot'-->
+          </li>
+          <li class="list-group-item" id="monitor">
+            <a href="{% url 'productApp89:products' 'monitor' %}">智能监控</a>
+          </li>
+          <li class="list-group-item" id="face">
+            <a href="{% url 'productApp89:products' 'face' %}"
+              >人脸识别解决方案</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 说明文字和图片 -->
+    <div class="col-md-9">
+      <div class="model-details-title">{{productName}}</div>
+      <!-- 此处填入产品列表内容 -->
+      <div class="model-details">
+        {% for product in productList %}
+
+        <div class="row">
+          <div class="col-md-6">
+            {% for img in product.productImgs.all %} {% if forloop.first %}
+            <a
+              href="{% url 'productApp89:productDetail' product.id %}"
+              class="thumbnail row-4"
+            >
+              <img class="img-responsive model-img" src="{{img.photo.url}}" />
+            </a>
+            {% endif %} {% endfor %}
+          </div>
+          <div class="col-md-6">
+            <h3>{{ product.title|truncatechars:"20" }}</h3>
+
+            <p>{{ product.description|truncatechars:"150"|linebreaks }}</p>
+
+            <!--去除边框-->
+            <div class="thumbnail row-5 removeborder">
+              <div class="caption">
+                <a
+                  href="{% url 'productApp89:productDetail' product.id %}"
+                  class="btn btn-primary"
+                  role="button"
+                >
+                  查看详情
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!--传入pageData变量来实现分页-->
+        {% if pageData %}
+        <div class="paging">
+          <ul id="pages" class="pagination pagination-sm pagination-xs">
+            {% if pageData.first %}
+            <li><a href="?page=1">1</a></li>
+            <!---->
+            {% endif %}
+            <!---->
+            {% if pageData.left %}
+            <!---->
+            {% if pageData.left_has_more %}
+            <li><span>...</span></li>
+            {% endif %}
+            <!---->
+            {% for i in pageData.left %}
+            <li><a href="?page={{i}}">{{i}}</a></li>
+            {% endfor %}
+            <!---->
+            {% endif %}
+            <li class="active">
+              <a href="?page={{pageData.page}}">{{pageData.page}}</a>
+            </li>
+            {% if pageData.right %} {% for i in pageData.right %}
+            <li><a href="?page={{i}}">{{i}}</a></li>
+            {% endfor %}
+            <!---->
+            {% if pageData.right_has_more %}
+            <li><span>...</span></li>
+            {% endif %}
+            <!---->
+            {% endif %}
+            <!---->
+            {% if pageData.last %}
+            <li>
+              <a href="?page={{pageData.total_pages}}"
+                >{{pageData.total_pages}}</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

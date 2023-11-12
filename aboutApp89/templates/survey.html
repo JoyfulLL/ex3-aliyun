@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+<!---->
+{% load static %}
+
+<!--标题-->
+{% block title %} 企业概况 {%endblock %}
+
+<!-- 主体部分 -->
+{% block content%}
+<!-- 广告横幅 -->
+<div class="container-fluid">
+  <div class="row">
+    <img class="img-responsive model-img" src="{% static 'img/about.jpg' %}" />
+  </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+  <div class="row row-3">
+    <!-- 侧边导航栏 -->
+    <div class="col-md-3">
+      <div class="model-title">公司简介</div>
+      <div class="model-list">
+        <ul class="list-group">
+          <!--侧边栏部分采用Bootstrap提供的列表组件 list-group实现-->
+          <li class="list-group-item" id="survey">
+            <a href="{% url 'aboutApp89:survey' %}">企业概况</a>
+          </li>
+          <li class="list-group-item" id="honor">
+            <a href="{% url 'aboutApp89:honor' %}">荣誉资质</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 说明文字和图片 -->
+    <div class="col-md-9">
+      <div class="model-details-title">企业概况</div>
+      <div class="model-details">
+        <p>
+          概况描述：
+          科技先锋有限公司是一家领先的科技公司，专注于创新技术的研发、生产和应用。公司成立于20XX年，总部位于一个科技发展迅速的城市。在过去的几年里，科技先锋公司取得了巨大的成功，并在科技行业树立了良好的声誉。
+        </p>
+        <p>
+          核心价值观： 科技先锋公司秉承以下核心价值观：
+          创新：公司致力于通过创新技术解决现实世界的问题，并推动社会的发展和进步。
+          质量：科技先锋公司追求卓越的产品质量和服务，以满足客户的需求和期望。
+          合作：公司鼓励团队合作和知识共享，以促进创新和团队的成长。
+          可持续性：科技先锋公司注重可持续发展，致力于在技术创新的同时减少对环境的影响。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

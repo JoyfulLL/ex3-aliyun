@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %} {% load static %}
+
+<!---->
+{% block title %} 
+科研基地
+{% endblock %}
+
+<!---主体部分-->
+{% block content %}
+<!广告横幅>
+<div class="container-fluid">
+  <div class="row">
+    <img
+      class="img-responsive model - img"
+      src="{% static 'img/science.jpg' %}"
+    />
+  </div>
+</div>
+
+<!科研页面主体>
+<div class="container">
+  <div class="model-details-title">科研基地介绍</div>
+  <div class="model-details">
+    <p>近二十年来，中国科技致力打造“ 加油Huawei，加油China ”的企业文化......</p>
+    <img class="img-responsive" id="img1" src="{% static 'img/kyjd.jpg' %}" />
+    <h1>研究方向</h1>
+    <h3>机器人导航</h3>
+    <p>多传感器路径规划、物联网一体化平台。</p>
+    <h3>人体行为识别：</h3>
+    <p>单用户行为识别，多用户行为识别</p>
+    <h3>人脸识别：</h3>
+    <p>人脸检测、属性分析</p>
+  </div>
+</div>
+{% endblock %}
